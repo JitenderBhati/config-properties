@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    username: root
+    password: admin
+    url: jdbc:mysql://mySql:3306/UserService?createDatabaseIfNotExist=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+  liquibase:
+    change-log: classpath:db/changelog/changelog-master.xml
+  h2:
+    console:
+      enabled: true
+
+logging:
+  file:
+    name: userservice-dev.log
+    path: ./
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka
+
+security:
+  oauth2:
+    resource:
+      token-info-uri: http://localhost:8383/oauth/check_token
+    client:
+      client-id: desktop
+      client-secret: test123
